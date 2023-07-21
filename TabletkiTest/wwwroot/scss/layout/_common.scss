@@ -1,0 +1,89 @@
+body {
+  background-color: $body-bg;
+}
+
+.resize-active {
+  * {
+    transition: none !important;
+  }
+}
+
+.open-close-active {
+  overflow: hidden;
+
+  @include media('>=tablet') {
+    overflow: visible;
+  }
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.page-holder {
+  @include media('>=desktop') {
+    display: flex;
+  }
+}
+
+.sitebar {
+  display: none;
+
+  @include media('>=tablet') {
+    background-color: $sitebar-bg;
+    padding: 25px 0 25px 40px;
+  }
+
+  @include media('>=desktop') {
+    display: block;
+    padding: 35px 0 35px 50px;
+    min-height: 661px;
+    width: 27%;
+  }
+
+  @include media('>=laptop') {
+    padding: 35px 0 35px 79px;
+  }
+
+  h2 {
+    @include media('>=desktop') {
+      margin-bottom: 29px;
+    }
+  }
+}
+
+.main-content {
+  @include media('>=desktop') {
+    width: 73%;
+  }
+}
+
+.title {
+  padding: 13px 0 20px;
+
+  @include media('>=desktop') {
+    border-bottom: 1px solid $border-gray;
+  }
+}
+
+.icon {
+  svg {
+    vertical-align: middle;
+  }
+}
+
+address {
+  font-style: normal;
+}
+
+.bold-text {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.mob-order-1 {
+  @include media('<tablet') {
+    order: 1;
+  }
+}

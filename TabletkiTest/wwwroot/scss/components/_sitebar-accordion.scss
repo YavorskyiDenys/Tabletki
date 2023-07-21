@@ -1,0 +1,52 @@
+.sitebar-accordion {
+  @extend %listreset;
+  color: $gray-1;
+
+  a {
+    color: $gray-1;
+  }
+
+  > li {
+    border-bottom: 1px solid $border-gray;
+  }
+
+  .current-page {
+    .opener {
+      color: $success;
+    }
+  }
+
+  .active {
+    .opener {
+      font-weight: 600;
+    }
+  }
+
+  .opener {
+    display: block;
+    padding: 13px 0;
+    text-transform: uppercase;
+  }
+
+  ul {
+    @extend %listreset;
+
+    li {
+      padding: 8px 24px;
+    }
+
+    a {
+      text-transform: uppercase;
+    }
+
+    .btn-item {
+      padding: 12px 14px 12px 0;
+      a {
+        text-transform: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+}

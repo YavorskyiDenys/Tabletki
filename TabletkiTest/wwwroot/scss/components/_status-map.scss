@@ -1,0 +1,55 @@
+.status-map {
+  padding: 0 12px;
+
+  .status-step {
+    position: relative;
+    padding-left: 27px;
+    border-left: 1px dotted $success;
+
+    &:before {
+      @include size(12px, 12px);
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: -6px;
+      background-image: url(../images/status-waiting.svg);
+      background-color: $white;
+      background-repeat: no-repeat;
+    }
+
+    &:last-child {
+      &:before {
+        height: 18px;
+      }
+    }
+
+    &.active-step {
+      padding-bottom: 22px;
+
+      &:last-of-type {
+        border-left: 0;
+      }
+
+      &:before {
+        @include size(16px, 16px);
+        top: 0px;
+        left: -8px;
+        background-image: url(../images/status-active.svg);
+      }
+
+      .status-step-name {
+        color: $body-color;
+      }
+    }
+  }
+
+  .status-step-name {
+    font-size: 16px;
+    color: $gray-1;
+    font-weight: 600;
+  }
+
+  .banner {
+    margin-top: 15px;
+  }
+}

@@ -1,0 +1,345 @@
+.reservation {
+  padding: 10px 0;
+
+  @include media('>=tablet') {
+    padding: 21px 20px 32px;
+  }
+
+  @include media('>=laptop') {
+    padding: 21px 76px 32px 20px;
+  }
+}
+
+.reservation-header {
+  padding: 0 16px;
+
+  @include media('>=tablet') {
+    padding: 0 0 24px;
+  }
+
+  .btn {
+    @include media('>=desktop') {
+      display: none;
+    }
+  }
+
+  .title {
+    margin-bottom: 0;
+  }
+}
+
+.reservation-body {
+  background-color: $green;
+  border: 1px solid $green;
+  border-radius: 8px;
+  box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.2);
+
+  &.active {
+    border: 1px solid $border-primary;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    overflow-y: auto;
+
+    @include media('>=tablet') {
+      position: static;
+      height: auto;
+      overflow-y: visible;
+    }
+
+    @include media('<tablet') {
+      border-radius: 0;
+    }
+
+    .reservation-info {
+      .reservation-address {
+        border-bottom: 0;
+      }
+    }
+
+    .reservation-col {
+      &:first-child {
+        @include media('<tablet') {
+          padding-right: 0;
+        }
+      }
+    }
+
+    .reservation-status {
+      @include media('<375px') {
+        flex-direction: row;
+      }
+
+      @include media('<tablet') {
+        justify-content: space-between;
+      }
+    }
+
+    .reservation-price {
+      @include media('<tablet') {
+        background: $green-2;
+        padding: 9px 19px;
+        margin: -16px -16px 17px;
+      }
+    }
+
+    .slide {
+      @include media('<tablet') {
+        border-radius: 0;
+      }
+    }
+  }
+
+  .reservation-external {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border-radius: 8px;
+
+    @include media('>=tablet') {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  .slide {
+    background: $white;
+    border-radius: 0px 0px 8px 8px;
+  }
+}
+
+.reservation-info {
+  display: flex;
+  flex-direction: column;
+
+  @include media('>=tablet') {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+    width: 81%;
+  }
+
+  @include media('>=laptop') {
+    width: 65%;
+  }
+
+  .reservation-col {
+    &:first-child {
+      @include media('<tablet') {
+        padding-right: 47px;
+      }
+    }
+
+    &:not(:first-child) {
+      @include media('<tablet') {
+        border-bottom: 1px solid $border-primary;
+        padding: 11px 0;
+      }
+    }
+
+    &:not(:last-of-type) {
+      @include media('>=tablet') {
+        margin-bottom: 11px;
+      }
+    }
+
+    @include media('>=tablet') {
+      padding: 0 15px;
+      width: 50%;
+    }
+
+    .banner {
+      margin-bottom: 10px;
+
+      @include media('>=tablet') {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .reservation-status {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+
+    @include media('>=375px') {
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+    @include media('>=tablet') {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    @include media('>=1200px') {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .badge {
+      margin-right: 6px;
+    }
+  }
+
+  .status-message {
+    font-weight: 600;
+
+    @include media('>=tablet') {
+      display: none;
+    }
+  }
+
+  .reservation-list {
+    @extend %listreset;
+    padding: 10px 0;
+
+    @include media('>=tablet') {
+      display: none;
+    }
+
+    .active & {
+      display: none;
+    }
+
+    > li {
+      span {
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+
+    ul {
+      margin-bottom: 0;
+      padding: 11px 0 11px 21px;
+      list-style: disc;
+    }
+  }
+}
+
+.reservation-price {
+  @include media('>=tablet') {
+    display: flex;
+  }
+
+  .total-price {
+    display: none;
+
+    @include media('>=tablet') {
+      display: block;
+    }
+
+    span {
+      display: block;
+
+      &:first-child {
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  .btns-dropdown {
+    .btn-dropdown {
+      @include size(48px, 48px);
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: $btn-green;
+      border-radius: 8px;
+
+      .active & {
+        @include media('<tablet') {
+          display: none;
+        }
+      }
+
+      @include media('>=tablet') {
+        display: block;
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-left: 13px;
+      }
+
+      svg {
+        @include transition(transform);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-90deg);
+
+        @include media('>=tablet') {
+          transform: translate(-50%, -50%);
+        }
+
+        .active & {
+          transform: translate(-50%, -50%) rotate(180deg);
+        }
+      }
+    }
+
+    .btn-back-mobile {
+      display: none;
+      font-size: 16px;
+      color: $white;
+
+      .active & {
+        display: block;
+
+        @include media('>=tablet') {
+          display: none;
+        }
+      }
+
+      .icon {
+        margin-right: 7px;
+      }
+    }
+  }
+}
+
+.reservation-products {
+  display: flex;
+  flex-direction: column;
+
+  @include media('>=tablet') {
+    flex-direction: row;
+  }
+
+  .products-list {
+    border-right: 1px solid $border-primary;
+
+    @include media('>=tablet') {
+      width: 57%;
+    }
+
+    .products-price {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid $border-primary;
+      padding: 16px;
+
+      span {
+        font-size: 18px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .products-status {
+    padding: 24px 17px;
+
+    @include media('>=tablet') {
+      width: 43%;
+    }
+
+    .status-map {
+      margin-bottom: 25px;
+    }
+  }
+}

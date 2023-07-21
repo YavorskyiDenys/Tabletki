@@ -1,0 +1,39 @@
+a.danger-text {
+  &:hover {
+    color: lighten($danger, 5%);
+  }
+}
+
+.danger-text {
+  color: $danger;
+}
+
+.success-text {
+  color: $success;
+}
+
+.text-btn {
+  font-size: 16px;
+
+  .icon {
+    margin-right: 17px;
+  }
+}
+
+.btn {
+  &:hover {
+    .icon {
+      transform: translateX(-4px);
+    }
+  }
+
+  .icon {
+    @include transition(transform);
+    display: inline-block;
+  }
+
+  .badge-gray {
+    color: $gray-1;
+    background-color: $gray-5;
+  }
+}

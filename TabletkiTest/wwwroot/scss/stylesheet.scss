@@ -1,0 +1,27 @@
+﻿// 1. Configuration and helpers
+@import 'abstracts/_variables.scss';
+@import 'abstracts/_functions.scss';
+@import 'abstracts/_mixins.scss';
+
+// 2. Vendors: include media mixins and mormalize imported from node_modules
+@import 'vendors/_include-media.scss';
+@import 'vendors/_normalize.scss';
+
+// 3. Base styles and elements
+@import 'base/_base.scss';
+@import 'base/_helpers.scss';
+@import 'base/_typography.scss';
+
+// 4. Layout-related sections
+@import 'layout/_header.scss';
+@import 'layout/_common.scss';
+@import 'layout/_footer.scss';
+@import 'layout/_reservation-block.scss';
+
+// 5. Components
+@import 'components/_button.scss';
+@import 'components/_badges.scss';
+@import 'components/_product-card.scss';
+@import 'components/_banners.scss';
+@import 'components/_status-map.scss';
+@import 'components/_sitebar-accordion.scss';

@@ -1,0 +1,339 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Tabletki-reservation";
+}
+
+@{
+    List<Card> cards = new List<Card>()
+    {
+        new Card{
+            Id = 122010210,
+            ImgUrl = "images/product-img.png",
+            Title = "Магнікор, таб. №30",
+            Produced = "Kиевский витаминный завод",
+            Price = "79.77",
+            PackSum = 1,
+            IsRecomended = false
+        },
+        new Card{
+            Id = 122010212,
+            ImgUrl = "images/product-img.png",
+            Title = "Каптопрес-дарница табл. 50мг/25мг №20",
+            Produced = "Дарница чао (украина, киев)",
+            Price = "79.77",
+            PackSum = 1,
+            IsRecomended = true
+        },
+        new Card{
+            Id = 122010213,
+            ImgUrl = "images/product-img.png",
+            Title = "Каптопрес-дарница табл. 50мг/25мг №20",
+            Produced = "Дарница чао (украина, киев)",
+            Price = "79.77",
+            PackSum = 1,
+            IsRecomended = true
+        }
+    };
+}
+
+@{
+    var basket = new Basket
+    {
+        Company = "Аптека TAS",
+        CompanyWorkTime = "21:00",
+        CompanyAddress = "вул. Саперно-Слобідська 10, Київ",
+        TotalProducts = 3,
+        TotalSum = 239,
+        OrderTime = "04.04.2023 в 09:45",
+        OrderNumber = "№122010210, №122010212, №122010213",
+        OrderStatus = true,
+        IsRecomended = true
+    };
+}
+
+@{
+    var statusMap = new StatusMap
+    {
+        Processing = true,
+        Completed = false
+    };
+}
+
+<div class="page-holder container">
+    <div class="sitebar">
+        <h2>Особистий кабінет</h2>
+        <ul class="accordion sitebar-accordion">
+            <li class="current-page">
+                <a href="#" class="opener">Mої броні</a>
+                <div class="slide">
+                    <ul>
+                        <li><a href="#">Переглянуті</a></li>
+                        <li><a href="#">Раніше бронювали</a></li>
+                        <li><a href="#">Обрані товари 0</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="active">
+                <a href="#" class="opener">Mої списки товарів</a>
+                <div class="slide">
+                    <ul>
+                        <li><a href="#">Переглянуті</a></li>
+                        <li><a href="#">Раніше бронювали</a></li>
+                        <li><a href="#">Обрані товари 0</a></li>
+                        <li class="btn-item">
+                            <a href="#">
+                                <span>Створити новий список</span>
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                        <path fill-rule="evenodd"
+                                              clip-rule="evenodd"
+                                              d="M15.25 23.0464C15.25 23.435 15.5858 23.75 16 23.75C16.4142 23.75 16.75 23.435 16.75 23.0464V16.5H23.2964C23.685 16.5 24 16.1642 24 15.75C24 15.3358 23.685 15 23.2964 15H16.75V8.45355C16.75 8.06499 16.4142 7.75 16 7.75C15.5858 7.75 15.25 8.06499 15.25 8.45355V15H8.70355C8.31499 15 8 15.3358 8 15.75C8 16.1642 8.31499 16.5 8.70355 16.5H15.25V23.0464Z"
+                                              fill="#888888" />
+                                    </svg>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="opener">Mої аптеки</a>
+                <div class="slide">
+                    <ul>
+                        <li><a href="#">Lorem ipsum dolor sit amet consectetur.</a></li>
+                        <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+                        <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="opener">Cсобисті дані та налаштуваня</a>
+                <div class="slide">
+                    <ul>
+                        <li><a href="#">Lorem ipsum dolor sit amet consectetur.</a></li>
+                        <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+                        <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="opener">Вихід</a>
+                <div class="slide">
+                    <ul>
+                        <li><a href="#">Lorem ipsum dolor sit amet consectetur.</a></li>
+                        <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+                        <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <section class="reservation">
+            <div class="reservation-header">
+                <a href="#" class="btn">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path fill-rule="evenodd"
+                                  clip-rule="evenodd"
+                                  d="M15.113 10.4983C15.3901 10.8062 15.3651 11.2804 15.0573 11.5575L10.9544 15.25H23.1666C23.5809 15.25 23.9166 15.5858 23.9166 16C23.9166 16.4142 23.5809 16.75 23.1666 16.75H10.9544L15.0573 20.4425C15.3651 20.7196 15.3901 21.1938 15.113 21.5017C14.8359 21.8096 14.3617 21.8346 14.0538 21.5575L7.87885 16L14.0538 10.4425C14.3617 10.1654 14.8359 10.1904 15.113 10.4983Z"
+                                  fill="#3B9C25" />
+                        </svg>
+                    </span>
+                    <span class="badge badge-gray">Особистий кабінет</span>
+                </a>
+                <h1 class="title h2">Мої броні</h1>
+            </div>
+
+            <div class="reservation-body open-close">
+                <div class="reservation-external">
+                    <div class="reservation-info mob-order-1">
+                        <div class="reservation-col">
+                            <div class="reservation-status">
+                                @if (@basket.OrderStatus)
+                                {
+                                    <span class="badge badge-success">Бронь створено</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-danger">Бронь скасовано</span>
+                                }
+                                <span>@basket.OrderTime</span>
+                            </div>
+                            @foreach (var card in cards)
+                            {
+                                <span class="bold-text">№@card.Id</span>
+                            }
+                        </div>
+                        <div class="reservation-col reservation-address mob-order-1">
+                            <div>
+                                <span>@basket.Company</span>
+                                <span class="icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g id="icons-1">
+                                            <circle id="Ellipse" cx="12" cy="12" r="7.6875" stroke="#3B9C25" stroke-width="1.125" />
+                                            <path id="Vector-2" d="M12 11.25V16.5" stroke="#3B9C25" stroke-width="1.125" stroke-linecap="round" />
+                                            <circle id="Ellipse-2" cx="12" cy="8.25" r="0.9375" stroke="#3B9C25" stroke-width="1.125" />
+                                        </g>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div>Відчинено до @basket.CompanyWorkTime</div>
+                            <address>@basket.CompanyAddress</address>
+                        </div>
+                        <div class="reservation-col w-100">
+                            @if(basket.IsRecomended)
+                            {
+                                <div class="banner banner-warning">
+                                    <span class="icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g id="icons-2">
+                                                <circle id="Ellipse-3" cx="12" cy="12" r="7.6875" stroke="#E06213" stroke-width="1.125" />
+                                                <path id="Vector-3" d="M12 11.25V16.5" stroke="#E06213" stroke-width="1.125" stroke-linecap="round" />
+                                                <circle id="Ellipse-4" cx="12" cy="8.25" r="0.9375" stroke="#E06213" stroke-width="1.125" />
+                                            </g>
+                                        </svg>
+                                    </span>
+                                    <span>Назвіть додаткові номери бронювань для отримання рецептурних товарів</span>
+                                </div>
+                            }
+                            <div class="status-message success-text">
+                                <span>Бронь передано аптеці, очікуйте підтвердження</span>
+                            </div>
+                        </div>
+                        <ul class="reservation-list mob-order-1">
+                            @foreach (var card in cards)
+                            {
+                                <li>
+                                    <span>№@card.Id
+                                        @if(card.IsRecomended)
+                                        {
+                                            <span>(за рецептом)</span>
+                                        }
+                                        :</span>
+                                    <ul>
+                                        <li>@card.Title</li>
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="reservation-price">
+                        <div class="total-price">
+                            <span>@basket.TotalProducts товари</span>
+                            <span>@basket.TotalSum грн</span>
+                        </div>
+                        <span class="btns-dropdown opener">
+                            <span class="btn-dropdown">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                    <path d="M10 14L15.5 19L21 14" stroke="#3B9C25" stroke-width="1.5" stroke-linecap="round" />
+                                </svg>
+                            </span>
+                            <span class="btn-back-mobile">
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                        <path d="M7 16H25M7 16L11.5 20.5M7 16L11.5 11.5" stroke="white" stroke-width="2" stroke-linecap="round" />
+                                    </svg>
+                                </span>
+                                <span>Мої броні</span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="reservation-products">
+                        <div class="products-list mob-order-1">
+                            @foreach (var card in cards)
+                            {
+                                <div class="product-card">
+                                    <div class="product-order">
+                                        <span class="bold-text">№@card.Id</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="img-holder">
+                                            <img src="@card.ImgUrl" alt="image description" />
+                                        </div>
+                                        <div class="product-description">
+                                            <h3 class="product-name h5">@card.Title</h3>
+                                            <div class="product-producer">@card.Produced</div>
+                                            @if (@card.IsRecomended)
+                                            {
+                                                <span class="badge badge-gray badge-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="16" viewBox="0 0 13 16" fill="none">
+                                                        <path fill-rule="evenodd"
+                                                              clip-rule="evenodd"
+                                                              d="M0.862061 1V10.5455H2.79293V7.49094H4.23514L6.52083 11.1454L3.46153 16H5.6557L7.63672 12.7273L9.6052 16H11.8621L8.80276 11.1182L11.7367 6.45451H9.54251L7.75258 9.44035L6.3036 7.13639C7.55741 6.6273 8.18432 5.64093 8.18432 4.17729C8.18432 3.25001 7.93356 2.51364 7.43203 1.96819C6.83856 1.32273 5.98597 1 4.87426 1H0.862061ZM4.74887 5.63638H2.79293V2.89546H4.71126C5.18771 2.89546 5.55967 3.01364 5.82715 3.25001C6.09463 3.47728 6.22837 3.81365 6.22837 4.2591C6.22837 4.67729 6.09881 5.01365 5.83969 5.2682C5.58057 5.51366 5.21696 5.63638 4.74887 5.63638Z"
+                                                              fill="#6B6B6B" />
+                                                    </svg>
+                                                    За рецептом
+                                                </span>
+                                            }
+                                            
+                                            <div class="product-score">
+                                                <span>@card.PackSum упаковка</span>
+                                                <span class="bold-text">@card.Price грн</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            <div class="products-price">
+                                <span>Всього:</span>
+                                <span>@basket.TotalSum грн</span>
+                            </div>
+                        </div>
+                        <div class="products-status">
+                            <div class="status-map">
+                                <div class="status-step active-step">
+                                    <span class="step-icon"></span>
+                                    <span class="status-step-name">Бронь створено @basket.OrderTime</span>
+                                    <div class="banner banner-warning banner-sm">
+                                        <span>Бронь передано аптеці, очікуйте підтвердження</span>
+                                    </div>
+                                </div>
+                                @if(statusMap.Processing)
+                                {
+                                    <div class="status-step active-step">
+                                        <span class="step-icon"></span>
+                                        <span class="status-step-name">Обробка</span>
+                                    </div>
+                                } else
+                                {
+                                    <div class="status-step">
+                                        <span class="step-icon"></span>
+                                        <span class="status-step-name">Обробка</span>
+                                    </div>
+                                }
+                                @if (statusMap.Completed)
+                                {
+                                    <div class="status-step active-step">
+                                        <span class="step-icon"></span>
+                                        <span class="status-step-name">Очікує вас</span>
+                                    </div>
+                                } else
+                                {
+                                    <div class="status-step">
+                                        <span class="step-icon"></span>
+                                        <span class="status-step-name">Обробка</span>
+                                    </div>
+                                }
+                                
+                            </div>
+                            <a href="#" class="text-btn danger-text">
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <circle cx="12" cy="12" r="9.1875" transform="rotate(-90 12 12)" stroke="#FF6262" stroke-width="1.125" />
+                                        <path d="M8.25 15.75L15.75 8.25" stroke="#FF6262" stroke-width="1.125" stroke-linecap="round" />
+                                        <path d="M15.75 15.75L8.25 8.25" stroke="#FF6262" stroke-width="1.125" stroke-linecap="round" />
+                                    </svg>
+                                </span>
+                                ВІДМІНИТИ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

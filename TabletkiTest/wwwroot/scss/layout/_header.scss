@@ -1,0 +1,8 @@
+.header {
+  background-color: $green-2;
+  height: 50px;
+
+  @include media('>=tablet') {
+    height: 60px;
+  }
+}

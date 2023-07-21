@@ -1,0 +1,8 @@
+.footer {
+  background-color: $gray-5;
+  min-height: 700px;
+
+  @include media('>=tablet') {
+    min-height: 600px;
+  }
+}
